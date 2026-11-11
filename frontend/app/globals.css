@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@media print {
+  body { background: white !important; }
+  #tailored-cv { box-shadow: none !important; border: 0 !important; }
+  #tailored-cv button, header, main > div > section:not(#tailored-cv) { display: none !important; }
+}
