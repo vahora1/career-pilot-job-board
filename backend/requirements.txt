@@ -6,4 +6,6 @@ openai
 python-dotenv
 pypdf
 python-docx
-sqlalchemy
+SQLAlchemy
+psycopg2-binary
+
