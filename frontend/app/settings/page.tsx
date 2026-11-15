@@ -144,7 +144,7 @@ function Section({
   children,
 }: {
   id: string;
-  icon: string;
+  icon?: string;
   title: string;
   description: string;
   children: React.ReactNode;
