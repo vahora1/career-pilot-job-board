@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -11,15 +12,19 @@ type HeaderAction = {
 };
 
 type DashboardHeaderProps = {
-  title: string;
-  subtitle: string;
+  title?: string;
+  subtitle?: string;
   actions?: HeaderAction[];
+  actionLabel?: string;
+  onAction?: () => void;
 };
 
 export default function DashboardHeader({
-  title,
-  subtitle,
+  title = "Dashboard",
+  subtitle = "Welcome to CareerPilot",
   actions = [],
+  actionLabel,
+  onAction,
 }: DashboardHeaderProps) {
   function handleAction(action?: string) {
     if (action === "print") {
@@ -30,8 +35,6 @@ export default function DashboardHeader({
   return (
     <header className="h-[72px] border-b border-slate-200 bg-white">
       <div className="flex h-full items-center justify-between px-8">
-
-        {/* LEFT */}
         <div>
           <h1 className="text-[20px] font-medium leading-6 text-slate-900">
             {title}
@@ -42,23 +45,18 @@ export default function DashboardHeader({
           </p>
         </div>
 
-        {/* RIGHT */}
         <div className="flex items-center gap-3">
-
-          {/* Notifications */}
           <button
             type="button"
             aria-label="Notifications"
             className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-sm hover:bg-slate-50"
           >
             <span className="text-[18px]">♧</span>
-
             <span className="absolute -right-1 -top-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-semibold text-white">
               3
             </span>
           </button>
 
-          {/* Avatar */}
           <button
             type="button"
             aria-label="Profile"
@@ -67,12 +65,21 @@ export default function DashboardHeader({
             HS
           </button>
 
-          {/* Actions */}
+          {actionLabel && (
+            <button
+              type="button"
+              onClick={onAction}
+              className="inline-flex h-10 items-center gap-2 rounded-xl bg-[#8964CC] px-4 text-sm font-semibold text-white shadow-sm hover:bg-[#7450B5]"
+            >
+              {actionLabel}
+            </button>
+          )}
+
           {actions.map((action) => {
             const buttonClass =
               action.variant === "secondary"
                 ? "inline-flex h-10 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50"
-                : "inline-flex h-10 items-center gap-2 rounded-xl bg-[#5b50e8] px-4 text-sm font-semibold text-white shadow-sm hover:bg-[#4d43dc]";
+                : "inline-flex h-10 items-center gap-2 rounded-xl bg-[#8964CC] px-4 text-sm font-semibold text-white shadow-sm hover:bg-[#7450B5]";
 
             if (action.href) {
               return (
