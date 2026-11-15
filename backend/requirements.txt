@@ -7,5 +7,5 @@ python-dotenv
 pypdf
 python-docx
 SQLAlchemy
-psycopg2-binary
+psycopg2[binary]
 
