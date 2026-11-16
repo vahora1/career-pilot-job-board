@@ -8,4 +8,6 @@ pypdf
 python-docx
 SQLAlchemy
 psycopg[binary]
-
+psycopg2-binary
+pwdlib[argon2]
+itsdangerous
