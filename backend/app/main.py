@@ -17,7 +17,7 @@ app.add_middleware(
     SessionMiddleware,
     secret_key=os.environ["SESSION_SECRET"],
     session_cookie="careerpilot_session",
-    same_site="lax",
+    same_site="none",
     https_only=True,
     max_age=60 * 60 * 24 * 7,
 )
